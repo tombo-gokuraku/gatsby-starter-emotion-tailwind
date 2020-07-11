@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-emotion-eslint-prettier-stylelint",
+  "name": "gatsby-starter-emotion-tailwind",
   "private": true,
-  "description": "Basic Gatsby starter for using Emotion. Linting with ESLint and stylelint.",
+  "description": "Gatsby starter for using Emotion and tailwind. Linting with ESLint and stylelint.",
   "version": "0.1.0",
   "author": "tombo gokuraku",
   "dependencies": {

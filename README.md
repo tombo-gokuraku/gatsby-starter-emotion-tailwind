@@ -13,7 +13,7 @@ Kick off your project with this default boilerplate. This starter ships with the
 _Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
 
 ## Features
-* style with Emotion
+* style with Emotion and tailwind
 * lint with ESLint and stylelint
 
 ## 🚀 Quick start

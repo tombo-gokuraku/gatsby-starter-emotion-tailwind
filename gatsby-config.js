@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `gatsby-starter-emotion-eslint-prettier-stylelint`,
-    description: `Basic Gatsby starter for using Emotion. Linting with ESLint and stylelint.`,
+    title: `gatsby-starter-emotion-tailwind`,
+    description: `Gatsby starter for using Emotion and tailwind. Linting with ESLint and stylelint.`,
     author: `@tombo-gokuraku`,
   },
   plugins: [
