@@ -1,28 +1,185 @@
-import { Link } from "gatsby"
-
 /** @jsx jsx */
 import { jsx } from "@emotion/core"
-import "twin.macro"
+// import "twin.macro"
+import tw, { css, styled } from "twin.macro"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <div tw="container flex justify-center">
-      <button tw="px-4 py-2 bg-green-400 rounded">tailwind</button>
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to &quot;Using TypeScript&quot;</Link>
+    <H1>Gatsby starter using Emotin and tailwind</H1>
+    <H2>Install</H2>
+    <P>Install the Gatsby CLI and create a project with this starter</P>
+    <Pre>
+      <code>
+        gatsby new emotion_tailwind
+        https://github.com/tombo-gokuraku/gatsby-starter-emotion-tailwind
+      </code>
+      <br />
+      <code>cd emotion_tailwind</code>
+      <br />
+      <code>gatsby develop</code>
+    </Pre>
+    <H2>Usage</H2>
+    <H3>Use with tw prop</H3>
+    <Pre>
+      <code>import &apos;twin.macro&apos; </code>
+      <br />
+      <code>
+        &lt;button tw=&quot;px-4 py-2 border-4 border-green-400 border-solid
+        rounded focus:outline-none&quot;&gt;
+        <br />
+        &nbsp;&nbsp;tw prop
+        <br />
+        &lt;/button&gt;
+      </code>
+    </Pre>
+
+    <button tw="px-4 py-2 border-4 border-green-400 border-solid rounded focus:outline-none">
+      tw prop
+    </button>
+    <H3>Use with tw tag</H3>
+    <Pre>
+      <code>import tw from &quot;twin.macro&quot;</code>
+      <br />
+      <code>
+        const Button = tw.button`
+        <br />
+        &nbsp;&nbsp; bg-teal-100
+        <br />
+        &nbsp;&nbsp; py-2
+        <br />
+        &nbsp;&nbsp; px-4
+        <br />
+        &nbsp;&nbsp; rounded
+        <br />
+        &nbsp;&nbsp; border-solid
+        <br />
+        &nbsp;&nbsp; border-teal-400
+        <br />
+        &nbsp;&nbsp; border-4
+        <br />
+        &nbsp;&nbsp; focus:outline-none
+        <br />`
+        <br /> &lt;Button&gt;tw tag&lt;/Button&gt;
+      </code>
+    </Pre>
+    <Button>tw tag</Button>
+    <H3>Use with css tag</H3>
+    <Pre>
+      <code>import tw, &#123;css&#125; from &quot;twin.macro&quot;</code>
+      <br />
+      <code>
+        &lt;a
+        <br />
+        &nbsp;&nbsp;href=&quot;/&quot;
+        <br />
+        &nbsp;&nbsp;css=&#123;&#91;
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;tw`inline-block&nbsp;text-base&nbsp;text-black`,
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;css`
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;::after&nbsp;&#123;
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content:&nbsp;&quot;&quot;;
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;block;
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-top:&nbsp;2px;
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height:&nbsp;2px;
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color:&nbsp;#B2F5EA;
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#125;
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;`,
+        <br />
+        &nbsp;&nbsp;&#93;&#125;
+        <br />
+        &gt;
+        <br />
+        &nbsp;&nbsp;css&nbsp;tag
+        <br />
+        &lt;/a&gt;
+      </code>
+    </Pre>
+    <a
+      href="/"
+      css={[
+        tw`inline-block text-base text-black`,
+        css`
+          &::after {
+            content: "";
+            display: block;
+            margin-top: 2px;
+            height: 2px;
+            background-color: #b2f5ea;
+          }
+        `,
+      ]}
+    >
+      css tag
+    </a>
+    <H3>Use as styled components</H3>
+    <CustomButton primary>primary</CustomButton>
+    <CustomButton secondary>secondary</CustomButton>
+    <CustomButton small>small button</CustomButton>
+    <H2>Settings</H2>
+    <H3>tailwind.config</H3>
+    <H3>babelMacros</H3>
+    <H2>Example</H2>
   </Layout>
 )
+
+const H1 = tw.h1`
+  text-3xl font-bold py-4 pb-3
+`
+const H2 = tw.h2`
+  text-2xl font-semibold py-5 pb-2
+`
+const H3 = tw.h3`
+  text-xl font-medium py-5 pb-1
+`
+const P = tw.p`
+  text-base
+  py-1
+`
+
+const Pre = tw.pre`
+  text-sm
+  bg-gray-300
+  overflow-auto
+  mb-2
+`
+
+const Button = tw.button`
+  bg-teal-100
+  py-2
+  px-4
+  rounded
+  border-solid
+  border-teal-400
+  border-4
+  focus:outline-none
+`
+
+const CustomButton = styled.button(({ primary, secondary, small, theme }) => [
+  tw`px-4 py-2 rounded transform hocus:scale-110 transition-transform duration-100 hocus:text-teal-500 hocus:font-bold focus:outline-none`,
+  primary && tw`bg-teal-100`,
+  secondary &&
+    css`
+      background: linear-gradient(
+        to left,
+        ${theme.colors.primary},
+        ${theme.colors.secondary}
+      );
+      ${tw`text-white rounded-md hocus:text-white`};
+    `,
+  small ? tw`text-sm` : tw`text-lg`,
+])
 
 export default IndexPage

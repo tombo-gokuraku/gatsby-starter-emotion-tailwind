@@ -11,8 +11,9 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import { Global, css } from "@emotion/core"
 
+import Theme from "./Theme"
 import Header from "./header"
-import "./layout.css"
+// import "./layout.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -26,7 +27,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <Theme>
       <Global
         styles={css`
           body {
@@ -49,7 +50,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </Theme>
   )
 }
 
