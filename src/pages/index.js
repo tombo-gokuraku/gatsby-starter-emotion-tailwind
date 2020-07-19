@@ -1,19 +1,56 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core"
-import { useTheme } from "emotion-theming"
+// import { useTheme } from "emotion-theming"
 import tw, { css, styled } from "twin.macro"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
+import { mq, mqf } from "../styles/breaks"
+
 const IndexPage = () => {
-  const theme = useTheme()
-  console.log(theme)
+  // const theme = useTheme()
+  // console.log(theme)
 
   return (
     <Layout>
       <SEO title="Home" />
       <H1>Gatsby starter using Emotin and tailwind</H1>
+      <div
+        css={[
+          css`
+            background-color: red;
+            ${mq[0]} {
+              background-color: orange;
+            }
+            ${mq[1]} {
+              background-color: yellow;
+            }
+            ${mq[2]} {
+              background-color: lightgreen;
+            }
+            ${mq[3]} {
+              background-color: lightblue;
+            }
+          `,
+        ]}
+      >
+        breakpoints test
+      </div>
+
+      <div
+        css={mqf({
+          backgroundColor: [
+            "red",
+            "orange",
+            "yellow",
+            "lightgreen",
+            "lightblue",
+          ],
+        })}
+      >
+        facepaint test
+      </div>
       <H2>Install</H2>
       <P>Install the Gatsby CLI and create a project with this starter</P>
       <Pre>
@@ -136,20 +173,20 @@ const IndexPage = () => {
       <span tw="ml-4"></span>
       <StyledButton large>large</StyledButton>
       <span tw="ml-4"></span>
-      <button
-        css={[
-          tw`px-4 py-2 text-white rounded transform hocus:scale-110 transition-transform duration-100 hocus:font-bold focus:outline-none`,
-          css`
-            background: linear-gradient(
-              to left,
-              ${theme.colors.primary},
-              ${theme.colors.secondary}
-            );
-          `,
-        ]}
-      >
-        ThemeButton from useTheme
-      </button>
+      {/* <button */}
+      {/*   css={[ */}
+      {/*     tw`px-4 py-2 text-white rounded transform hocus:scale-110 transition-transform duration-100 hocus:font-bold focus:outline-none`, */}
+      {/*     css` */}
+      {/*       background: linear-gradient( */}
+      {/*         to left, */}
+      {/*         ${theme.colors.primary}, */}
+      {/*         ${theme.colors.secondary} */}
+      {/*       ); */}
+      {/*     `, */}
+      {/*   ]} */}
+      {/* > */}
+      {/*   ThemeButton from useTheme */}
+      {/* </button> */}
       <span tw="ml-4"></span>
       <ThemeButton>ThemeButton from props.theme</ThemeButton>
       <span tw="ml-4"></span>
