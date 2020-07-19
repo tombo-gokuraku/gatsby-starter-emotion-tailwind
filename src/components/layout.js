@@ -9,11 +9,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { Global, css } from "@emotion/core"
+import "twin.macro"
 
 import Theme from "./Theme"
 import Header from "./header"
-// import "./layout.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,21 +27,8 @@ const Layout = ({ children }) => {
 
   return (
     <Theme>
-      <Global
-        styles={css`
-          body {
-            margin: 0;
-          }
-        `}
-      />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div tw="container px-4 pt-0 pb-6 mx-auto my-0 max-w-screen-lg">
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
