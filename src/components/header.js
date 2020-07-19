@@ -1,38 +1,44 @@
+/** @jsx jsx */
+import { jsx } from "@emotion/core"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import { useTheme } from "emotion-theming"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
+import tw, { css } from "twin.macro"
+
+const Header = ({ siteTitle }) => {
+  const theme = useTheme()
+
+  return (
+    <header
+      css={[
+        tw`mb-6`,
+        css`
+          background: linear-gradient(
+            to left,
+            ${theme.colors.primary},
+            ${theme.colors.secondary}
+          );
+        `,
+      ]}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+      <div tw="container px-4 py-4 mx-auto my-0 max-w-screen-lg">
+        <h1 tw="text-5xl">
+          <Link to="/" tw="text-white no-underline">
+            {siteTitle}
+          </Link>
+        </h1>
+      </div>
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  theme: PropTypes.object,
+  colors: PropTypes.object,
+  primary: PropTypes.string,
+  secondary: PropTypes.string,
 }
 
 Header.defaultProps = {
