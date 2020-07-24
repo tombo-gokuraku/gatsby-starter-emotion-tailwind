@@ -166,12 +166,10 @@ const IndexPage = () => {
       <H3>Use as styled components</H3>
 
       <StyledButton>normal</StyledButton>
-      <span tw="ml-4"></span>
       <StyledButton large>large</StyledButton>
-      <span tw="ml-4"></span>
       <button
         css={[
-          tw`px-4 py-2 text-white rounded transform hover:(scale-110 font-bold) transition-transform duration-100 focus:outline-none`,
+          tw`px-4 py-2 m-2 text-white rounded transform hover:(scale-110 font-bold) transition-transform duration-100 focus:outline-none`,
           css`
             background: linear-gradient(
               to left,
@@ -183,14 +181,10 @@ const IndexPage = () => {
       >
         css prop ThemeButton
       </button>
-      <span tw="ml-4"></span>
       <ThemeButton>Styled ThemeButton</ThemeButton>
-      <span tw="ml-4"></span>
 
       <CustomButton>normal</CustomButton>
-      <span tw="ml-4"></span>
       <CustomButton primary>primary</CustomButton>
-      <span tw="ml-4"></span>
       <CustomButton gradient>gradient</CustomButton>
       <H2>Settings</H2>
       <H3>tailwind.config</H3>
@@ -238,12 +232,12 @@ const ExtendedButton = tw(Button)`
 
 // object style
 const StyledButton = styled.button(({ large }) => [
-  tw`px-4 py-2 bg-teal-200 rounded`,
+  tw`px-4 py-2 m-2 bg-teal-200 rounded`,
   large ? tw`text-xl` : tw`text-base`,
 ])
 
 const CustomButton = styled.button(({ primary, gradient }) => [
-  tw`px-4 py-2 bg-orange-200 rounded transform hover:(scale-110 text-teal-500 font-bold) transition-transform duration-100 focus:outline-none`,
+  tw`m-2 px-4 py-2 bg-orange-200 rounded transform hover:(scale-110 text-teal-500 font-bold) transition-transform duration-100 focus:outline-none`,
   primary && tw`bg-teal-200`,
   gradient &&
     css`
@@ -254,7 +248,7 @@ const CustomButton = styled.button(({ primary, gradient }) => [
 
 //ThemeButton
 const ThemeButton = styled.button([
-  tw`px-4 py-2 text-white rounded transform hover:(scale-110 font-bold) transition-transform duration-100 focus:outline-none`,
+  tw`m-2 px-4 py-2 text-white rounded transform hover:(scale-110 font-bold) transition-transform duration-100 focus:outline-none`,
   css`
     background: linear-gradient(
       to left,
