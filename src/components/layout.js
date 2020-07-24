@@ -11,7 +11,6 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import "twin.macro"
 
-import Theme from "./Theme"
 import Header from "./header"
 
 const Layout = ({ children }) => {
@@ -26,7 +25,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <Theme>
+    <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div tw="container px-4 pt-0 pb-6 mx-auto my-0 max-w-screen-lg">
         <main>{children}</main>
@@ -36,7 +35,7 @@ const Layout = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </Theme>
+    </>
   )
 }
 

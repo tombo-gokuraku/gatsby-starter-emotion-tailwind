@@ -2,13 +2,10 @@
 import { jsx } from "@emotion/core"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import { useTheme } from "emotion-theming"
 
-import tw, { css } from "twin.macro"
+import tw, { css, theme } from "twin.macro"
 
 const Header = ({ siteTitle }) => {
-  const theme = useTheme()
-
   return (
     <header
       css={[
@@ -16,8 +13,8 @@ const Header = ({ siteTitle }) => {
         css`
           background: linear-gradient(
             to left,
-            ${theme.colors.primary},
-            ${theme.colors.secondary}
+            ${theme`colors.primary`},
+            ${theme`colors.secondary`}
           );
         `,
       ]}
@@ -35,7 +32,6 @@ const Header = ({ siteTitle }) => {
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-  theme: PropTypes.object,
   colors: PropTypes.object,
   primary: PropTypes.string,
   secondary: PropTypes.string,
