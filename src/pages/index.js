@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core"
-// import { useTheme } from "emotion-theming"
-import tw, { css, styled } from "twin.macro"
+import tw, { css, styled, theme } from "twin.macro"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -9,9 +8,6 @@ import SEO from "../components/seo"
 import { mq, mqf } from "../styles/breaks"
 
 const IndexPage = () => {
-  // const theme = useTheme()
-  // console.log(theme)
-
   return (
     <Layout>
       <SEO title="Home" />
@@ -173,22 +169,22 @@ const IndexPage = () => {
       <span tw="ml-4"></span>
       <StyledButton large>large</StyledButton>
       <span tw="ml-4"></span>
-      {/* <button */}
-      {/*   css={[ */}
-      {/*     tw`px-4 py-2 text-white rounded transform hocus:scale-110 transition-transform duration-100 hocus:font-bold focus:outline-none`, */}
-      {/*     css` */}
-      {/*       background: linear-gradient( */}
-      {/*         to left, */}
-      {/*         ${theme.colors.primary}, */}
-      {/*         ${theme.colors.secondary} */}
-      {/*       ); */}
-      {/*     `, */}
-      {/*   ]} */}
-      {/* > */}
-      {/*   ThemeButton from useTheme */}
-      {/* </button> */}
+      <button
+        css={[
+          tw`px-4 py-2 text-white rounded transform hocus:scale-110 transition-transform duration-100 hocus:font-bold focus:outline-none`,
+          css`
+            background: linear-gradient(
+              to left,
+              ${theme`colors.primary`},
+              ${theme`colors.secondary`}
+            );
+          `,
+        ]}
+      >
+        css prop ThemeButton
+      </button>
       <span tw="ml-4"></span>
-      <ThemeButton>ThemeButton from props.theme</ThemeButton>
+      <ThemeButton>Styled ThemeButton</ThemeButton>
       <span tw="ml-4"></span>
 
       <CustomButton primary>primary</CustomButton>
@@ -247,26 +243,26 @@ const StyledButton = styled.button(({ large }) => [
 //
 
 //ThemeButton
-const ThemeButton = styled.button(({ theme }) => [
-  tw`px-4 py-2 text-white rounded transform hocus:scale-110 transition-transform duration-100 hocus:font-bold focus:outline-none`,
+const ThemeButton = styled.button([
+  tw`px-4 py-2 text-white rounded transform hover:(scale-110 font-bold) transition-transform duration-100 focus:outline-none`,
   css`
     background: linear-gradient(
       to left,
-      ${theme.colors.primary},
-      ${theme.colors.secondary}
+      ${theme`colors.primary`},
+      ${theme`colors.secondary`}
     );
   `,
 ])
 
-const CustomButton = styled.button(({ primary, secondary, small, theme }) => [
+const CustomButton = styled.button(({ primary, secondary, small }) => [
   tw`px-4 py-2 rounded transform hocus:scale-110 transition-transform duration-100 hocus:text-teal-500 hocus:font-bold focus:outline-none`,
   primary && tw`bg-teal-100`,
   secondary &&
     css`
       background: linear-gradient(
         to left,
-        ${theme.colors.primary},
-        ${theme.colors.secondary}
+        ${theme`colors.primary`},
+        ${theme`colors.secondary`}
       );
       ${tw`text-white rounded-md hocus:text-white`};
     `,
