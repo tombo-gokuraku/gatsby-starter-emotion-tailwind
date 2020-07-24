@@ -171,7 +171,7 @@ const IndexPage = () => {
       <span tw="ml-4"></span>
       <button
         css={[
-          tw`px-4 py-2 text-white rounded transform hocus:scale-110 transition-transform duration-100 hocus:font-bold focus:outline-none`,
+          tw`px-4 py-2 text-white rounded transform hover:(scale-110 font-bold) transition-transform duration-100 focus:outline-none`,
           css`
             background: linear-gradient(
               to left,
@@ -187,9 +187,11 @@ const IndexPage = () => {
       <ThemeButton>Styled ThemeButton</ThemeButton>
       <span tw="ml-4"></span>
 
+      <CustomButton>normal</CustomButton>
+      <span tw="ml-4"></span>
       <CustomButton primary>primary</CustomButton>
-      <CustomButton secondary>secondary</CustomButton>
-      <CustomButton small>small button</CustomButton>
+      <span tw="ml-4"></span>
+      <CustomButton gradient>gradient</CustomButton>
       <H2>Settings</H2>
       <H3>tailwind.config</H3>
       <H3>babelMacros</H3>
@@ -240,7 +242,15 @@ const StyledButton = styled.button(({ large }) => [
   large ? tw`text-xl` : tw`text-base`,
 ])
 
-//
+const CustomButton = styled.button(({ primary, gradient }) => [
+  tw`px-4 py-2 bg-orange-200 rounded transform hover:(scale-110 text-teal-500 font-bold) transition-transform duration-100 focus:outline-none`,
+  primary && tw`bg-teal-200`,
+  gradient &&
+    css`
+      background: linear-gradient(to left, lightgreen, orange);
+      ${tw`text-white rounded-md hover:text-white`};
+    `,
+])
 
 //ThemeButton
 const ThemeButton = styled.button([
@@ -252,21 +262,6 @@ const ThemeButton = styled.button([
       ${theme`colors.secondary`}
     );
   `,
-])
-
-const CustomButton = styled.button(({ primary, secondary, small }) => [
-  tw`px-4 py-2 rounded transform hocus:scale-110 transition-transform duration-100 hocus:text-teal-500 hocus:font-bold focus:outline-none`,
-  primary && tw`bg-teal-100`,
-  secondary &&
-    css`
-      background: linear-gradient(
-        to left,
-        ${theme`colors.primary`},
-        ${theme`colors.secondary`}
-      );
-      ${tw`text-white rounded-md hocus:text-white`};
-    `,
-  small ? tw`text-sm` : tw`text-lg`,
 ])
 
 export default IndexPage
