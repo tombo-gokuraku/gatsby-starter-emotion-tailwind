@@ -5,7 +5,7 @@ import tw, { css, styled, theme } from "twin.macro"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import { mq, mqf } from "../styles/breaks"
+import { mq } from "../styles/breaks"
 
 const IndexPage = () => {
   return (
@@ -34,19 +34,6 @@ const IndexPage = () => {
         breakpoints test
       </div>
 
-      <div
-        css={mqf({
-          backgroundColor: [
-            "red",
-            "orange",
-            "yellow",
-            "lightgreen",
-            "lightblue",
-          ],
-        })}
-      >
-        facepaint test
-      </div>
       <H2>Install</H2>
       <P>Install the Gatsby CLI and create a project with this starter</P>
       <Pre>
