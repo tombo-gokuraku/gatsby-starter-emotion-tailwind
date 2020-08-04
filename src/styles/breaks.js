@@ -5,6 +5,11 @@ const {
   theme: { screens },
 } = resolveConfig(tailwindConfig)
 
-const breakpoints = Object.values(screens)
+Object.entries(screens).forEach(([key, value]) => {
+  console.log(`${key} ${value}`)
+  screens[key] = `@media (min-width: ${value})`
+})
 
-export const mq = breakpoints.map(bp => `@media (min-width: ${bp})`)
+console.log(screens)
+
+export screens;
