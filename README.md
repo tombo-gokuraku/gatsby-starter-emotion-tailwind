@@ -134,6 +134,86 @@ A quick look files and directories you'll see in a Gatsby project.
 
 16. **`tailwind.config.js`**: A tailwind configuration file.
 
+## Usage
+
+This starter can style with twin.macro as follows.
+
+### use with tw prop
+
+```jsx
+import "twin.macro"
+;<button tw="px-4 py-2 border-4 border-green-400 border-solid rounded focus:outline-none">
+  use tw prop
+</button>
+```
+
+### use with tw tag
+
+```jsx
+import tw from "twin.macro"
+
+const Button = tw.button`
+   bg-teal-100
+   py-2
+   px-4
+   rounded
+   border-solid
+   border-teal-400
+   border-4
+   focus:outline-none
+`
+ <Button>tw tag</Button>
+```
+
+extend tw tag components
+
+```jsx
+const ExtendedButton = tw(Button)`
+  text-orange-500
+`
+
+<ExtendedButton>extended button</ExtendedButton>
+```
+
+### use with css tag in css prop
+
+```jsx
+import tw, { css } from "twin.macro"
+;<a
+  href="/"
+  css={[
+    tw`inline-block text-base text-black`,
+    css`
+      &::after {
+        content: "";
+        display: block;
+        margin-top: 2px;
+        height: 2px;
+        background-color: #b2f5ea;
+      }
+    `,
+  ]}
+>
+  css tag in css prop
+</a>
+```
+
+### use with styled component
+
+```jsx
+import tw, {styled} from "twin.macro"
+
+const StyledButton = styled.button(({ large }) => [
+  tw`px-4 py-2 bg-teal-200 rounded`,
+  large ? tw`text-xl` : tw`text-base`,
+])
+
+<StyledButton>normal</StyledButton>
+<StyledButton large>large</StyledButton>
+```
+
+For further details of twin.macro usage, please visit [official documents](https://github.com/ben-rogerson/twin.macro/blob/master/docs/emotion/gatsby.md) or [my blog](https://tombomemo.com/gatsby-emotion-tailwind-setup/).
+
 ## 💫 Deploy
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/tombo-gokuraku/gatsby-starter-emotion-tailwind)
