@@ -15,17 +15,17 @@ const IndexPage = () => {
       <div
         css={[
           css`
-            background-color: red;
-            ${mq[0]} {
+            background-color: pink;
+            ${mq["sm"]} {
               background-color: orange;
             }
-            ${mq[1]} {
+            ${mq["md"]} {
               background-color: yellow;
             }
-            ${mq[2]} {
+            ${mq["lg"]} {
               background-color: lightgreen;
             }
-            ${mq[3]} {
+            ${mq["xl"]} {
               background-color: lightblue;
             }
           `,

@@ -6,10 +6,7 @@ const {
 } = resolveConfig(tailwindConfig)
 
 Object.entries(screens).forEach(([key, value]) => {
-  console.log(`${key} ${value}`)
   screens[key] = `@media (min-width: ${value})`
 })
 
-console.log(screens)
-
-export screens;
+export { screens as mq }
